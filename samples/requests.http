@@ -55,6 +55,9 @@ GET {{$dotenv HOST}}/listings/ HTTP/1.1
 ### Get published listings
 GET {{$dotenv HOST}}/listings/?is_published=true HTTP/1.1
 
+### Get all listings with pagination
+GET {{$dotenv HOST}}/listings/?page=1 HTTP/1.1
+
 ### Get published listings that are in a specific city
 GET {{$dotenv HOST}}/listings/?is_published=true&city=Tehran HTTP/1.1
 
