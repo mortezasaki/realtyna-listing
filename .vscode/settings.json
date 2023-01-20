@@ -1,0 +1,31 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintArgs": [
+        "--disable=C0111",
+        "--load-plugins",
+        "pylint_django",
+        "--disable=django-not-configured",
+        "--django-settings-module=booking.settings"
+    ],
+    "editor.formatOnSave": true,
+    "yaml.format.enable": true,
+    "[python]": {
+        "editor.defaultFormatter": null
+    },
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--skip-string-normalization"
+    ],
+    "python.terminal.activateEnvironment": true,
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "tests",
+        "-s"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    }
+}

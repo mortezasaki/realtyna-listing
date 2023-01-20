@@ -1,0 +1,151 @@
+### Create listing
+POST {{$dotenv HOST}}/listings/ HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="title"
+
+test
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="description"
+
+test
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="address"
+
+test
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="city"
+
+Tehran
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="state"
+
+test
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="bedrooms"
+
+1
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="bathrooms"
+
+1
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="sqft"
+
+100
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="price"
+
+100000
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="photo"; filename="sample.jpg"
+Content-Type: image/jpeg
+
+< ./sample.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="is_published"
+
+true
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Get all listings
+GET {{$dotenv HOST}}/listings/ HTTP/1.1
+
+### Get published listings
+GET {{$dotenv HOST}}/listings/?is_published=true HTTP/1.1
+
+### Get published listings that are in a specific city
+GET {{$dotenv HOST}}/listings/?is_published=true&city=Tehran HTTP/1.1
+
+### Get published listings with specific price range
+GET {{$dotenv HOST}}/listings/?is_published=true&price_max=1000000&price_min=1 HTTP/1.1
+
+### Get listing by id
+GET {{$dotenv HOST}}/listings/3 HTTP/1.1
+
+### Update listing
+PUT {{$dotenv HOST}}/listings/3/ HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="title"
+
+test3
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="description"
+
+test
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="address"
+
+test
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="city"
+
+test
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="state"
+
+test
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="bedrooms"
+
+1
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="bathrooms"
+
+1
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="sqft"
+
+100
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="price"
+
+100000
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="photo"; filename="sample.jpg"
+Content-Type: image/jpeg
+
+< ./sample.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="is_published"
+
+true
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Delete listing
+DELETE {{$dotenv HOST}}/listings/2/ HTTP/1.1
+
+### Reservation
+POST {{$dotenv HOST}}/listings/4/reserve/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "test",
+    "start_date": "2023-05-23",
+    "end_date": "2023-06-24"
+}
+
+### Get all reservations
+GET {{$dotenv HOST}}/listings/4/reserve/ HTTP/1.1
+
+### Get all reservation for a specific date
+GET {{$dotenv HOST}}/listings/4/reserve/?start_date_after=2023-01-09&start_date_before=2023-04-20 HTTP/1.1
+
+### Get reservation by id
+GET {{$dotenv HOST}}/listings/4/reserve/8 HTTP/1.1
+
+### Delete reservation
+DELETE {{$dotenv HOST}}/listings/4/reserve/8/ HTTP/1.1
+
+### Update reservation
+PUT {{$dotenv HOST}}/listings/1/reserve/4/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "test",
+    "start_date": "2023-01-14",
+    "end_date": "2023-01-15"
+}
