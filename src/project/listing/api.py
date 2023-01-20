@@ -1,8 +1,5 @@
-from datetime import datetime
-
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets
-from rest_framework.exceptions import ValidationError
 
 from .filters import BookingFilter, ListingFitler
 from .models import Booking, Listing
@@ -34,3 +31,11 @@ class BookingViewSet(viewsets.ModelViewSet):
         listing = get_object_or_404(Listing, id=listing_id)
         serializer.validated_data['listing'] = listing
         return super().perform_create(serializer)
+
+    def list(self, request, *args, **kwargs):
+        if request.accepted_renderer.media_type == 'text/html':
+            reservations = list(self.get_queryset())
+            return render(
+                request, 'listing/reservations.html', {'reservations': reservations}
+            )
+        return super().list(request, *args, **kwargs)

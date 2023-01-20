@@ -131,8 +131,12 @@ content-type: application/json
     "end_date": "2023-06-24"
 }
 
-### Get all reservations
+### Get all reservations as JSON
 GET {{$dotenv HOST}}/listings/4/reserve/ HTTP/1.1
+
+### Get all reservations as HTML
+GET {{$dotenv HOST}}/listings/4/reserve/ HTTP/1.1
+Accept: text/html
 
 ### Get all reservation for a specific date
 GET {{$dotenv HOST}}/listings/4/reserve/?start_date_after=2023-01-09&start_date_before=2023-04-20 HTTP/1.1
