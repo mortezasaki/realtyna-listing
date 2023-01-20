@@ -137,8 +137,11 @@ GET {{$dotenv HOST}}/listings/4/reserve/ HTTP/1.1
 ### Get all reservation for a specific date
 GET {{$dotenv HOST}}/listings/4/reserve/?start_date_after=2023-01-09&start_date_before=2023-04-20 HTTP/1.1
 
+### Get all reservations with pagination
+GET {{$dotenv HOST}}/listings/4/reserve/?page=1 HTTP/1.1
+
 ### Get reservation by id
-GET {{$dotenv HOST}}/listings/4/reserve/8 HTTP/1.1
+GET {{$dotenv HOST}}/listings/4/reserve/9 HTTP/1.1
 
 ### Delete reservation
 DELETE {{$dotenv HOST}}/listings/4/reserve/8/ HTTP/1.1
