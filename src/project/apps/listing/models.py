@@ -35,15 +35,6 @@ class Listing(models.Model):
         bookings = self.bookings.filter(start_date__lte=date, end_date__gte=date)
         return len(bookings) == 0
 
-    def reserve(self, name, start_date, end_date):
-        booking = Booking(
-            listing=self,
-            name=name,
-            start_date=start_date,
-            end_date=end_date,
-        )
-        return booking
-
     class Meta:
         ordering = ["-created_at"]
         indexes = [
