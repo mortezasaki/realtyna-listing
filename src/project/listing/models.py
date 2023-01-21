@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from uuid import uuid4
 
 from django.db import models
@@ -63,6 +64,9 @@ class Booking(models.Model):
     def save(self, *args, **kwargs):
         if self.start_date > self.end_date:
             raise ValueError("Start date must be less than end date")
+
+        if self.start_date < datetime.now().date():
+            raise ValueError("Start date must be greater than today")
 
         # Check if listing does not reserved for the given dates
         if not self.listing.get_reserved(
