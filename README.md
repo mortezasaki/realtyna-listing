@@ -21,7 +21,8 @@ docker-compose up -d
 
 ## Run Samples
 - First, install the Rest Client extension for VSCode
-- Then, open the file `requests.http` in `samples` folder and run the requests
+- Then, rename `sample.env` to `.env`.
+- Finally, open the file `requests.http` in `samples` folder and run the requests
   
 ## Testing
 ```bash
